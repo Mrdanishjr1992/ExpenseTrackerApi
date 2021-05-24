@@ -15,7 +15,13 @@ const userSchema = new mongoose.Schema(
 			trim: true,
 			minLength: 1,
 			maxLength: 200,
-		}
+		},
+		budgets:[
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: 'Budget',
+			}
+		]
 	},
 	{ timestamps: true }
 );

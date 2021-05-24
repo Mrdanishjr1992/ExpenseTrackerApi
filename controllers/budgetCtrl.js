@@ -1,62 +1,62 @@
 const db = require('../models');
 
 const index = (req, res) => {
-	db.Chat.find({}, (err, allChats) => {
+	db.Budget.find({ user: req.params.id }, (err, allBudgets) => {
 		if (err) return err;
 		// Send back data as JSON object
-		return res.json(allChats);
+		return res.json(allBudgets);
 	});
 };
 
 const show = (req, res) => {
-	db.Chat.findById(req.params.id, (err, foundChat) => {
+	db.Budget.findById(req.params.id, (err, foundBudget) => {
 		if (err) return err;
 		// Send back data to client as JSON object
-		return res.json(foundChat);
+		return res.json(foundBudget);
 	});
 };
 
 const create = (req, res) => {
-	db.Chat.create(req.body, (err, newChat) => {
+	db.Budget.create(req.body, (err, newBudget) => {
 		if (err) return err;
 		db.User.findByIdAndUpdate(
-			req.body.admin,
+			req.body.user,
 			{
-				$push: { chats: newChat._id },
+				$push: { budgets: newBudget._id },
 			},
 			{ new: true },
 			(err, updatedUser) => {
 				if (err) return err;
-				return res.json(newChat);
+				return res.json(newBudget);
 			}
 		);
 	});
 };
 
 const update = (req, res) => {
-	db.Chat.findByIdAndUpdate(
+	db.Budget.findByIdAndUpdate(
 		req.params.id,
 		req.body,
 		{ new: true },
-		(err, updatedChat) => {
+		(err, updatedBudget) => {
 			if (err) return err;
-			return res.json(updatedChat);
+			return res.json(updatedBudget);
 		}
 	);
 };
 
 const destroy = (req, res) => {
-	db.Chat.findByIdAndDelete(req.params.id, (err, deletedChat) => {
+	db.Budget.findByIdAndDelete(req.params.id, (err, deletedBudget) => {
 		if (err) return err;
 		db.User.findByIdAndUpdate(
-			req.body.admin,
+			req.body.user,
 			{
-				$pull: { chats: deletedChat._id },
+				$pull: { budgets: deletedBudget._id },
 			},
 			{ new: true },
 			(err, updatedUser) => {
 				if (err) return err;
-				return res.json(deletedChat);
+				return res.json(deletedBudget);
 			}
 		);
 	});
