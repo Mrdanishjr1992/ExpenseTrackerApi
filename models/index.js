@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const connectionString =
-	process.env.MONGODB_URI || 'mongodb://localhost:27017/jitter';
+	process.env.MONGODB_URI || 'mongodb://localhost:27017/expenseTracker';
 
 mongoose
 	.connect(connectionString, {
@@ -14,8 +14,6 @@ mongoose
 	.catch((err) => console.log(err));
 
 module.exports = {
-	Chat: require('./Chat'),
-	Group: require('./Group'),
-	Message: require('./Message'),
+	Budget: require('./Budget'),
 	User: require('./User'),
 };
