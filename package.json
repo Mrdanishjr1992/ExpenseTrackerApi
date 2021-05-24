@@ -1,0 +1,33 @@
+{
+  "name": "expensetrackerapi",
+  "version": "1.0.0",
+  "description": "Api for ExpenseTracker App",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "dev": "nodemon ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mrdanishjr1992/ExpenseTrackerApi.git"
+  },
+  "keywords": [
+    "backend",
+    "Db"
+  ],
+  "author": "Mohamed Abdulah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mrdanishjr1992/ExpenseTrackerApi/issues"
+  },
+  "homepage": "https://github.com/Mrdanishjr1992/ExpenseTrackerApi#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.8",
+    "mongoose": "^5.12.10"
+  }
+}
