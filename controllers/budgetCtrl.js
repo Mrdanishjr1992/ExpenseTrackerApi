@@ -9,7 +9,7 @@ const index = (req, res) => {
 };
 
 const show = (req, res) => {
-	db.Budget.findById(req.body.budgetId, (err, foundBudget) => {
+	db.Budget.findById(req.params.id, (err, foundBudget) => {
 		if (err) return err;
 		// Send back data to client as JSON object
 		return res.json(foundBudget);
@@ -35,7 +35,7 @@ const create = (req, res) => {
 
 const update = (req, res) => {
 	db.Budget.findByIdAndUpdate(
-		req.body.budgetId,
+		req.params.id,
 		req.body,
 		{ new: true },
 		(err, updatedBudget) => {
@@ -46,7 +46,7 @@ const update = (req, res) => {
 };
 
 const destroy = (req, res) => {
-	db.Budget.findByIdAndDelete(req.body.budgetId, (err, deletedBudget) => {
+	db.Budget.findByIdAndDelete(req.params.id, (err, deletedBudget) => {
 		if (err) return err;
 		db.User.findByIdAndUpdate(
 			req.body.userId,

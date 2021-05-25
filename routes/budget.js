@@ -8,12 +8,12 @@ router.post('/index', controllers.budget.index);
 router.post('/', controllers.budget.create);
 
 // Budget Read
-router.post('/read', controllers.budget.show);
+router.get('/:id', controllers.budget.show);
 
 // Budget Update
-router.put('/update', controllers.budget.update);
+router.put('/:id', controllers.budget.update);
 
 // Budget Delete
-router.delete('/delete', controllers.budget.destroy);
+router.delete('/:id', controllers.budget.destroy);
 
 module.exports = router;
